@@ -13,6 +13,7 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'province_city_repository' => env('PROVINCE_CITY_REPOSITORY', 'database'),
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),

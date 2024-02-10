@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RajaongkirController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::post('/login', [LoginController::class, 'login']);
+Route::middleware('auth:api')->group(function () {
+    Route::get('/search/provinces', [RajaongkirController::class, 'searchProvinces']);
+    Route::get('/search/cities', [RajaongkirController::class, 'searchCities']);
 });
-
-Route::get('/search/provinces', [RajaongkirController::class, 'searchProvinces']);
-Route::get('/search/cities', [RajaongkirController::class, 'searchCities']);
+// Route::get('/search/provinces', [RajaongkirController::class, 'searchProvinces']);
+// Route::get('/search/cities', [RajaongkirController::class, 'searchCities']);

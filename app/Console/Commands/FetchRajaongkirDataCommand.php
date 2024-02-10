@@ -29,7 +29,6 @@ class FetchRajaongkirDataCommand extends Command
     public function handle()
     {
         $apiKey = env('RAJAONGKIR_API_KEY');
-
         if (empty($apiKey)) {
             $this->error('Rajaongkir API key not found in .env file.');
             return;
